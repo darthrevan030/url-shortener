@@ -19,6 +19,8 @@ export default function Home() {
             className="bg-white w-full border rounded border-green-500"
             type="url"
             id="url"
+            value={url}
+            onChange={(e) => setCustomText(e.target.value)}
             required placeholder="https://example.com" 
           />
         </div>
@@ -30,6 +32,8 @@ export default function Home() {
             className="bg-white w-full border rounded border-green-500"
             type="text" 
             id="CustomText"
+            value={customText}
+            onChange={(e) => setCustomText(e.target.value)}
             required placeholder="https://example.com" 
           />
         </div>
@@ -38,7 +42,8 @@ export default function Home() {
         </button>
       </form>
       {/* On ANY error show error box */}
-      
+      {error && <div>{error}</div>}
+
     </main>
   );
 }
