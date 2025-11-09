@@ -12,6 +12,7 @@
   "dependencies": {
     "mongodb": "^7.0.0",
     "mongoose": "^8.19.3",
+    "nanoid": "^5.1.6",
     "next": "16.0.1",
     "react": "19.2.0",
     "react-dom": "19.2.0"
