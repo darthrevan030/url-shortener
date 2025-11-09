@@ -16,9 +16,9 @@ export default function Home() {
       const res = await fetch("/api/shorten", {
         method: "POST",
         headers: {
-          "Content-Type": "applications/json",
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({url, customText},)
+        body: JSON.stringify({url: url, customText: customText},)
       })
       const data = await res.json();
 
@@ -73,7 +73,13 @@ export default function Home() {
         <div className="mt-4 p-4 bg-green-100 rounded">
           <p>Shortened URL:</p>
           <div className="flex items-center gap-2">
-            <input type="text" value={{shortUrl}} readOnly />
+            <a
+              className="text-blue-500 text-decoration-line: underline"
+              href={shortUrl} 
+              target="_blank"
+              rel="noopener noreferrer" >
+            {shortUrl}
+            </a>
           </div>
         </div>
       )}
