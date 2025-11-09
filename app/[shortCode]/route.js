@@ -6,7 +6,7 @@ export async function GET(req, {params}) {
   try {
     await dbConnect();
 
-    const {shortCode} = params;
+    const {shortCode} = await params;
 
     const link = await LinkDataBase.findOne(
       { customText: shortCode }
