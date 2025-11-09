@@ -2,7 +2,7 @@
 import { NextResponse } from "next/server";
 import { nanoid } from "nanoid";
 import dbConnect from "@/lib/mongodb";
-import LinkDB from "@/models/Link";
+import LinkDataBase from "@/models/Link";
 
 export async function POST(req) {
   try {
@@ -12,6 +12,15 @@ export async function POST(req) {
 
     // parse request body
     const { url, customText } = await req.json();
+
+    console.log("Received URL: ", url);
+
+    if (!url) {
+      return NextResponse.json(
+        { error: "URL is required" },
+        { status: 400 }
+      );
+    }
 
     // validate url
     try {
@@ -23,7 +32,7 @@ export async function POST(req) {
 
     // check if customText already exists
     if (customText) {
-      const existingCustom = await LinkDB.findOne({ customText });
+      const existingCustom = await LinkDataBase.findOne({ customText });
       if (existingCustom) {
         return NextResponse.json(
           { error: "Custom text already exists" },
@@ -36,8 +45,8 @@ export async function POST(req) {
     const shortCode = customText || nanoid(6);
 
     // create new link
-    const link = await LinkDB.create({
-      originalUrl: url,
+    const link = await LinkDataBase.create({
+      originalURL: url,
       shortCode,
       customText: customText || null,
     })
