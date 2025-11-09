@@ -17,9 +17,9 @@ const LinkSchema = new Schema({
     type: Number,
     default: 0,
   },
-  timestamps: true,
-})
+  }, 
+  { timestamps: true} 
+);
 
-const LinkDB = mongoose.model('LinkDataBase', LinkSchema);
-
-module.exports = LinkDB;
+// Check if the model is already defined, otherwise define it
+export default mongoose.models.LinkDataBase || mongoose.model('LinkDataBase', LinkSchema);
