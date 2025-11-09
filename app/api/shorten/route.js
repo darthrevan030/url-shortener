@@ -30,14 +30,20 @@ export async function POST(req) {
       return NextResponse.json({ error: "Invalid URL"}, { status: 400 });
     }
 
-    // check if customText already exists
+    // check if customText already exists and update the originalURL with the new URL
     if (customText) {
       const existingCustom = await LinkDataBase.findOne({ customText });
       if (existingCustom) {
-        return NextResponse.json(
-          { error: "Custom text already exists" },
-          { status: 400 }
+        const newLink = await LinkDataBase.findOneAndUpdate(
+          { customText: customText },
+          { originalURL: url, clicks: 0 },
+          { new: true }
         )
+        return NextResponse.json(
+          { shortUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/${customText}` },
+          { originalURL: url },
+          { message: "Custom link updated " }
+        );
       }
     }
 
