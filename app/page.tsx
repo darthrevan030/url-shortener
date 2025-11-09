@@ -40,7 +40,7 @@ export default function Home() {
             Enter URL to shorten: 
           </label>
           <input 
-            className="bg-white w-full border rounded border-green-500"
+            className="bg-white w-full border rounded border-green-500 px-2"
             type="url"
             id="url"
             value={url}
@@ -53,7 +53,7 @@ export default function Home() {
             Custom Text: 
           </label>
           <input 
-            className="bg-white w-full border rounded border-green-500"
+            className="bg-white w-full border rounded border-green-500 px-2"
             type="text" 
             id="CustomText"
             value={customText}
@@ -72,7 +72,7 @@ export default function Home() {
       {shortUrl && (
         <div className="mt-4 p-4 bg-green-100 rounded">
           <p>Shortened URL:</p>
-          <div className="flex items-center gap-2">
+          <div className="w-full flex items-center px-2 gap-2 border rounded bg-white">
             <a
               className="text-blue-500 text-decoration-line: underline"
               href={shortUrl} 
