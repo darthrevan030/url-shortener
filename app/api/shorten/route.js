@@ -53,10 +53,10 @@ export async function POST(req) {
 
     console.log("link created", link);
 
-    return NextResponse.json({
-      shortUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/${shortCode}`,
-      shortCode,
-    })
+    return NextResponse.json(
+      { shortUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/${shortCode}`},
+      { shortCode },
+    )
   } catch (error) {
     console.error("Server Error", error);
     return NextResponse.json(
