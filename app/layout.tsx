@@ -32,9 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={` bg-green-50 ${geistSans.variable} ${geistMono.variable} ${outfitFont.className} antialiased`}
-      > 
+      <body className={` bg-green-50 ${geistSans.variable} ${geistMono.variable} ${outfitFont.className} antialiased`} > 
       <Navbar />
         {children}
       </body>
